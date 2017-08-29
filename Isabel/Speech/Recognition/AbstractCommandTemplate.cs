@@ -6,6 +6,6 @@ namespace Isabel.Speech.Recognition
 	public abstract class AbstractCommandTemplate
 		: ICommandTemplate
 	{
-		
+		public abstract ICommand Create();
 	}
 }
