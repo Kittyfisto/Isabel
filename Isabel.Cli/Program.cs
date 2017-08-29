@@ -10,8 +10,6 @@ namespace Isabel.Cli
 	class Program
 		: IApplication
 	{
-		private bool _exit;
-
 		static void Main(string[] args)
 		{
 			new Program().Run();
@@ -29,7 +27,7 @@ namespace Isabel.Cli
 				Console.WriteLine("Type exit to close the application");
 
 				string line;
-				while ((line = Console.ReadLine()) != "exit" && !_exit)
+				while ((line = Console.ReadLine()) != "exit")
 				{
 
 				}

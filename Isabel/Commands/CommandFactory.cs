@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Isabel.Speech.Recognition;
 
 namespace Isabel.Commands
@@ -23,6 +24,8 @@ namespace Isabel.Commands
 			Add<BeepCommandTemplate>(x => new BeepCommand(speechSynthesisEngine) {Template = x});
 			Add<KeyGestureCommandTemplate>(x => new KeyGestureCommand(keyboardInputEngine) {Template = x});
 			Add<ShutdownIsabelCommandTemplate>(x => new ShutdownIsabelCommand(application));
+			Add<CommandSeriesTemplate>(x => new CommandSeries(x.Commands.Select(TryCreate).Where(y => y != null)));
+			Add<SpeechCommandTemplate>(x => new SpeechCommand(speechSynthesisEngine) {Template = x});
 		}
 
 		public ICommand TryCreate(ICommandTemplate template)

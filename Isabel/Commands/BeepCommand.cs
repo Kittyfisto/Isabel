@@ -22,7 +22,7 @@ namespace Isabel.Commands
 			var beep = Template?.Beep;
 			if (beep != null)
 			{
-				_speechSynthesisEngine.Speak(beep);
+				_speechSynthesisEngine.Enqueue(beep);
 			}
 		}
 	}

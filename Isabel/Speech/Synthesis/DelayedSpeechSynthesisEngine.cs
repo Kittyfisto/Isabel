@@ -95,9 +95,21 @@ namespace Isabel.Speech.Synthesis
 		protected abstract void Speak(string phrase);
 		protected abstract void DisposeAdditional();
 
-		public void Speak(Phrase phrase)
+		public void Enqueue(Phrase phrase)
 		{
 			_pendingPhrases.Enqueue(phrase);
+		}
+
+		public void Execute(Phrase phrase)
+		{
+			if (phrase.Text != null)
+			{
+				Speak(phrase.Text);
+			}
+			else if (phrase.Beep != Synthesis.Beep.None)
+			{
+				Beep(phrase.Beep);
+			}
 		}
 	}
 }

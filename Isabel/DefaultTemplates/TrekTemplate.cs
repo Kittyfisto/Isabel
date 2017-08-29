@@ -28,7 +28,14 @@ namespace Isabel.DefaultTemplates
 					new VoiceCommandTemplate
 					{
 						Phrase = "Shutdown",
-						Command = new ShutdownIsabelCommandTemplate()
+						Command = new CommandSeriesTemplate
+						{
+							Commands =
+							{
+								new SpeechCommandTemplate {Speech = "Goodbye"},
+								new ShutdownIsabelCommandTemplate()
+							}
+						}
 					}
 				}
 			};

@@ -6,6 +6,7 @@ namespace Isabel
 	public interface ISpeechSynthesisEngine
 		: IDisposable
 	{
-		void Speak(Phrase phrase);
+		void Enqueue(Phrase phrase);
+		void Execute(Phrase phrase);
 	}
 }
