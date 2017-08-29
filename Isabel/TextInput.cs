@@ -4,14 +4,14 @@ namespace Isabel
 {
 	public sealed class TextInput
 	{
-		private readonly ICommandExecutor _executor;
+		private readonly ICommandExecutionEngine _executionEngine;
 
-		public TextInput(ICommandExecutor executor)
+		public TextInput(ICommandExecutionEngine executionEngine)
 		{
-			if (executor == null)
-				throw new ArgumentNullException(nameof(executor));
+			if (executionEngine == null)
+				throw new ArgumentNullException(nameof(executionEngine));
 
-			_executor = executor;
+			_executionEngine = executionEngine;
 		}
 	}
 }

@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 namespace Isabel.Speech.Recognition
 {
 	[DataContract]
-	public sealed class CommandTemplate
+	public sealed class VoiceCommandTemplate
 	{
 		[DataMember]
 		public string Phrase { get; set; }

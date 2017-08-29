@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using Isabel.Commands;
+using NUnit.Framework;
 
 namespace Isabel.Test.Commands
 {

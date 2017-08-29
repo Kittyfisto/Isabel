@@ -7,16 +7,19 @@ namespace Isabel.Speech.Recognition
 	/// </summary>
 	[DataContract]
 	public sealed class Template
+		: ITemplate
 	{
 		public Template()
 		{
-			Commands = new List<CommandTemplate>();
+			VoiceCommands = new List<VoiceCommandTemplate>();
 		}
 
 		/// <summary>
 		/// 
 		/// </summary>
 		[DataMember]
-		public List<CommandTemplate> Commands { get; set; }
+		public List<VoiceCommandTemplate> VoiceCommands { get; set; }
+
+		IReadOnlyList<VoiceCommandTemplate> ITemplate.VoiceCommands => VoiceCommands;
 	}
 }

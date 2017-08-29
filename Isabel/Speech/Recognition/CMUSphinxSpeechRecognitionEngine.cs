@@ -12,17 +12,27 @@ namespace Isabel.Speech.Recognition
 	public sealed class CMUSphinxSpeechRecognitionEngine
 		: AbstractSpeechRecognitionEngine
 	{
-		public CMUSphinxSpeechRecognitionEngine(ICommandExecutor executor)
-			: base(executor)
+		public CMUSphinxSpeechRecognitionEngine(ICommandExecutionEngine commandExecutionEngine)
+			: base(commandExecutionEngine)
 		{
 		}
 
-		protected override ICommand RecognizeCommand(CancellationToken token)
+		protected override ICommand RecognizeNextCommand(CancellationToken token)
 		{
 			throw new NotImplementedException();
 		}
 
 		protected override void DisposeAdditional()
+		{
+			throw new NotImplementedException();
+		}
+
+		public override void AddTemplate(ITemplate template)
+		{
+			throw new NotImplementedException();
+		}
+
+		public override void RemoveTemplate(ITemplate template)
 		{
 			throw new NotImplementedException();
 		}

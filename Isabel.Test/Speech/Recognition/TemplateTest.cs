@@ -13,9 +13,9 @@ namespace Isabel.Test.Speech.Recognition
 		{
 			var value = new Template
 			{
-				Commands =
+				VoiceCommands =
 				{
-					new CommandTemplate
+					new VoiceCommandTemplate
 					{
 						Phrase = "Dimn lights",
 						Command = new KeyGestureCommandTemplate

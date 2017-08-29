@@ -3,24 +3,6 @@ using Isabel.Speech.Recognition;
 
 namespace Isabel.Commands
 {
-	public enum Key
-	{
-		Ctrl,
-		CtrlLeft,
-		CtrlRight,
-
-		Alt,
-		AltLeft,
-		AltRight,
-
-		#region Multimedia Keys
-
-		Play,
-		Pause
-
-		#endregion
-	}
-
 	/// <summary>
 	///     A template for the <see cref="KeyGestureCommand" />.
 	/// </summary>
@@ -46,10 +28,5 @@ namespace Isabel.Commands
 		/// </summary>
 		[DataMember]
 		public string KeyPressLength { get; set; }
-
-		public override ICommand Create()
-		{
-			return new KeyGestureCommand();
-		}
 	}
 }

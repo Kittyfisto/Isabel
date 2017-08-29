@@ -1,6 +1,6 @@
 namespace Isabel
 {
-	public interface ICommandExecutor
+	public interface ICommandExecutionEngine
 	{
 		void Execute(ICommand command);
 	}

@@ -6,8 +6,8 @@ using log4net;
 
 namespace Isabel
 {
-	public sealed class DelayedCommandExecutor
-		: ICommandExecutor
+	public sealed class DelayedCommandExecutionEngine
+		: ICommandExecutionEngine
 		, IDisposable
 	{
 		private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
@@ -16,7 +16,7 @@ namespace Isabel
 		private readonly Thread _thread;
 		private readonly CancellationTokenSource _disposedTokenSource;
 
-		public DelayedCommandExecutor()
+		public DelayedCommandExecutionEngine()
 		{
 			_disposedTokenSource = new CancellationTokenSource();
 			_pendingCommands = new ConcurrentQueue<ICommand>();

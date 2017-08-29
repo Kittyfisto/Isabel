@@ -10,16 +10,16 @@ namespace Isabel.Speech.Recognition
 	{
 		private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
-		private readonly ICommandExecutor _executor;
+		private readonly ICommandExecutionEngine _commandExecutionEngine;
 		private readonly Thread _thread;
 		private readonly CancellationTokenSource _disposedTokenSource;
 
-		protected AbstractSpeechRecognitionEngine(ICommandExecutor executor)
+		protected AbstractSpeechRecognitionEngine(ICommandExecutionEngine commandExecutionEngine)
 		{
-			if (executor == null)
-				throw new ArgumentNullException(nameof(executor));
+			if (commandExecutionEngine == null)
+				throw new ArgumentNullException(nameof(commandExecutionEngine));
 
-			_executor = executor;
+			_commandExecutionEngine = commandExecutionEngine;
 			_disposedTokenSource = new CancellationTokenSource();
 			_thread = new Thread(RecognizeSpeech)
 			{
@@ -39,7 +39,7 @@ namespace Isabel.Speech.Recognition
 					var command = TryRecognizeCommand(token);
 					if (command != null)
 					{
-						_executor.Execute(command);
+						_commandExecutionEngine.Execute(command);
 					}
 				}
 			}
@@ -53,7 +53,7 @@ namespace Isabel.Speech.Recognition
 		{
 			try
 			{
-				return RecognizeCommand(token);
+				return RecognizeNextCommand(token);
 			}
 			catch (Exception e)
 			{
@@ -62,7 +62,7 @@ namespace Isabel.Speech.Recognition
 			}
 		}
 
-		protected abstract ICommand RecognizeCommand(CancellationToken token);
+		protected abstract ICommand RecognizeNextCommand(CancellationToken token);
 
 		public void Dispose()
 		{
@@ -81,5 +81,8 @@ namespace Isabel.Speech.Recognition
 		}
 
 		protected abstract void DisposeAdditional();
+
+		public abstract void AddTemplate(ITemplate template);
+		public abstract void RemoveTemplate(ITemplate template);
 	}
 }
