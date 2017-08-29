@@ -22,7 +22,14 @@ namespace Isabel.Commands
 			var beep = Template?.Beep;
 			if (beep != null)
 			{
-				_speechSynthesisEngine.Enqueue(beep);
+				if (Template.IsAsync)
+				{
+					_speechSynthesisEngine.Enqueue(beep);
+				}
+				else
+				{
+					_speechSynthesisEngine.Execute(beep);
+				}
 			}
 		}
 	}

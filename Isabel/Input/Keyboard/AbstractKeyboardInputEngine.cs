@@ -31,16 +31,20 @@ namespace Isabel.Input.Keyboard
 
 		private void PressKeys()
 		{
+			var token = _disposedTokenSource.Token;
 			try
 			{
-				IReadOnlyList<KeyGesture> gesture;
-				if (_pendingGestures.TryDequeue(out gesture))
+				while (!token.IsCancellationRequested)
 				{
-					TryExecute(gesture);
-				}
-				else
-				{
-					Thread.Sleep(TimeSpan.FromMilliseconds(10));
+					IReadOnlyList<KeyGesture> gesture;
+					if (_pendingGestures.TryDequeue(out gesture))
+					{
+						TryExecute(gesture);
+					}
+					else
+					{
+						Thread.Sleep(TimeSpan.FromMilliseconds(10));
+					}
 				}
 			}
 			catch (Exception e)

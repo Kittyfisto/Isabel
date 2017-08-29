@@ -33,7 +33,7 @@ namespace Isabel.Input.Keyboard
 		{
 			var virtualKey = Translate(key);
 			if (virtualKey != null)
-				_simulator.Keyboard.KeyDown(virtualKey.Value);
+				_simulator.Keyboard.KeyUp(virtualKey.Value);
 		}
 
 		[Pure]

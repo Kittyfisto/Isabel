@@ -9,5 +9,8 @@ namespace Isabel.Commands
 	{
 		[DataMember]
 		public Beep Beep { get; set; }
+
+		[DataMember]
+		public bool IsAsync { get; set; }
 	}
 }

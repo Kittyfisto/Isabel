@@ -10,6 +10,11 @@ namespace Isabel.Commands
 	public sealed class KeyGestureCommandTemplate
 		: AbstractCommandTemplate
 	{
+		public KeyGestureCommandTemplate()
+		{
+			KeyPressLength = "33ms";
+		}
+
 		/// <summary>
 		///     The (human readable) key gesture that shall be performed.
 		///     a+b means that the key a and b are pressed at the same time.

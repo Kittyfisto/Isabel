@@ -36,6 +36,25 @@ namespace Isabel.DefaultTemplates
 								new ShutdownIsabelCommandTemplate()
 							}
 						}
+					},
+
+					new VoiceCommandTemplate
+					{
+						Phrase = "mute",
+						Command = new CommandSeriesTemplate
+						{
+							Commands =
+							{
+								new BeepCommandTemplate
+								{
+									Beep = Beep.Affirmative,
+								},
+								new KeyGestureCommandTemplate
+								{
+									Gesture = nameof(Key.MuteVolume)
+								}
+							}
+						}
 					}
 				}
 			};
